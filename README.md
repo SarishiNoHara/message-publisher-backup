@@ -3,8 +3,29 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.2.
 
 ## Development server
-
+### Localhost
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+### Google Cloud
+
+1. Build the image:
+
+    `docker build . -t gcr.io/[project-id]/message-publisher:v1`
+
+2. Push to Google Cloud:
+
+    `gcloud docker -- push gcr.io/[project-id]/message-publisher:v1`
+
+3. Deploy the web application:
+
+    `gcloud deploy --image-url gcr.io/[project-id]/message-publisher:v1`
+
+4. View application in browser:
+
+    `gcloud app browser`
+#### Demo
+[https://loklak-167617.appspot.com/](https://loklak-167617.appspot.com/)
+
 
 ## Code scaffolding
 

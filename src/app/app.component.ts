@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+    title = 'My Page';
     tweets = ['amazing!'];
     newTweet = "";
     addTweet = function() {

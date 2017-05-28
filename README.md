@@ -22,7 +22,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 4. View application in browser:
 
-    `gcloud app browser`
+    `gcloud app browse`
 #### Demo
 [https://loklak-167617.appspot.com/](https://loklak-167617.appspot.com/)
 

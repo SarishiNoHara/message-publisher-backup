@@ -7,7 +7,7 @@ describe('loklak-message-publisher App', () => {
     page = new LoklakMessagePublisherPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display message saying Loklak Home Page', () => {
     page.navigateTo();
     expect(page.getParagraphText()).toEqual('Loklak Home Page');
   });

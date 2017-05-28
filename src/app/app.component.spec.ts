@@ -8,7 +8,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
-      imports:[FormsModule]
+      imports: [FormsModule]
     }).compileComponents();
   }));
 

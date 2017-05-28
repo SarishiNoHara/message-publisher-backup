@@ -1,6 +1,7 @@
 # LoklakMessagePublisher
+[![Build Status](https://travis-ci.org/SarishiNoHara/messge-publisher.svg?branch=master)](https://travis-ci.org/SarishiNoHara/messge-publisher)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.2.
+This project was generated with [Angular CLI](https://github.com/angular/ngular-cli) version 1.0.2.
 
 ## Development server
 ### Localhost

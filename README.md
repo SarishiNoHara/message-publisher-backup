@@ -19,7 +19,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 3. Deploy the web application:
 
-    `gcloud deploy --image-url gcr.io/[project-id]/message-publisher:v1`
+    `gcloud app deploy --image-url gcr.io/[project-id]/message-publisher:v1`
 
 4. View application in browser:
 

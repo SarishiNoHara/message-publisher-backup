@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AlertService, AuthenticationService } from '../_services/index';
+
 import { Http } from '@angular/http';
 import { contentHeaders } from '../headers';
 
@@ -10,36 +12,35 @@ import { contentHeaders } from '../headers';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public router: Router, public http: Http) { }
+  model: any = {}
+  loading = false;
+  returnUrl : string;
 
-  login(event, login, password) {
-    event.preventDefault();
-    let params: URLSearchParams = new URLSearchParams();
-    params.set('login',login);
-    params.set('password',password);
-    params.set('type', 'cookie');
-
-    this.http.post('http://127.0.0.1:9000/api/login.json?'+params, {headers: contentHeaders})
-      .subscribe(
-        response => {
-          response.json();
-          console.log('login successful');
-          this.router.navigate(['homepage']);
-        },
-        error => {
-          console.log(error.text());
-        }
-      )
-  }
-
-    signup(event) {
-    event.preventDefault();
-    this.router.navigate(['signup']);
-  }
+  constructor(private route: ActivatedRoute, 
+              private router: Router, 
+              private authenticationService: AuthenticationService,
+              private alertService: AlertService) { }
 
   ngOnInit() {
+    //reset login status
+    this.authenticationService.logout();
+    //get return url from route parameters or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
+  login() {
+    this.loading = true;
+    this.authenticationService.login(this.model.username, this.model.password)
+      .subscribe(
+        data => {
+          this.router.navigate([this.returnUrl]);
+        },
+        error => {
+          this.alertService.error(error);
+          this.loading = false;
+        }
+      );
+  }
 }
 
 

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
-import { Headers } from '@angular/http';
-import { contentHeaders } from '../headers';
+import { Router } from '@angular/router';
+import { AlertService, UserService } from '../_services/index';
+
+// import { Http } from '@angular/http';
+// import { Headers } from '@angular/http';
+// import { contentHeaders } from '../headers';
 
 @Component({
   selector: 'app-signup',
@@ -10,25 +13,28 @@ import { contentHeaders } from '../headers';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(public http: Http) { }
-  signup(event, signup, password) {
-    event.preventDefault()
-    let body = JSON.stringify({ signup, password });
-    let params: URLSearchParams = new URLSearchParams();
-    params.set('signup',signup);
-    params.set('password',password);
-    
-    return this.http.post('http://localhost:9000/api/signup.json?'+params, {header: contentHeaders}).subscribe(
-      response => {response.json();
-                   console.log('signup successful!')},
-      error => {alert(error.text());}
-    ); 
- }
+  model: any = {};
+  loading = false;
 
-  ngOnInit() {
+  constructor(private router: Router, private userService: UserService, private alertService: AlertService) { }
+
+  register() {
+    this.loading = true;
+    this.userService.create(this.model)
+      .subscribe(
+        data => {
+          //alert successful in login page.
+          this.alertService.success('Registration Successful', true);
+          this.router.navigate(['./login']);
+        },
+        error => {
+          this.alertService.error(error);
+          this.loading = false;
+        }
+      );
   }
-
+  
+    ngOnInit() {
+  }
 }
-
-
 

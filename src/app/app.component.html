@@ -1,7 +1,11 @@
-<a routerLink='/login'>Login</a>
-<a routerLink='/signup'>Signup</a>
-<a routerLink='/homepage'>Homepage</a>
-<a routerLink='/'>Logout</a>
-<h1>{{ title }}</h1>
-<br>
-<router-outlet></router-outlet>
+<!-- main app container -->
+
+<app-navi></app-navi>
+<div class="fs bg">
+    <div class=" container ">
+        <div class="col-sm-8 col-sm-offset-2 ">
+            <alert></alert>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

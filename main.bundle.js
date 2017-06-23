@@ -299,15 +299,6 @@ var UserService = (function () {
     UserService.prototype.getById = function (id) {
         return this.http.get('/api/users/' + id, this.jwt()).map(function (response) { return response.json(); });
     };
-    UserService.prototype.create = function (user) {
-        return this.http.post('/api/users', user, this.jwt()).map(function (response) { return response.json(); });
-    };
-    UserService.prototype.update = function (user) {
-        return this.http.put('/api/users/' + user.id, user, this.jwt()).map(function (response) { return response.json(); });
-    };
-    UserService.prototype.delete = function (id) {
-        return this.http.delete('/api/users/' + id, this.jwt()).map(function (response) { return response.json(); });
-    };
     // private helper methods
     UserService.prototype.jwt = function () {
         // create authorization header with jwt token
@@ -332,7 +323,7 @@ var _a;
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- main app container -->\n\n<app-navi></app-navi>\n<div class=\"fs bg\">\n    <div class=\" container \">\n        <div class=\"col-sm-8 col-sm-offset-2 \">\n            <alert></alert>\n            <router-outlet></router-outlet>\n        </div>\n    </div>\n</div>"
+module.exports = "<!-- main app container -->\n<app-navi></app-navi>\n<div class=\"fs bg\">\n    <div class=\" container \">\n        <div class=\"col-sm-8 col-sm-offset-2\">\n            <alert></alert>\n            <router-outlet></router-outlet>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -413,9 +404,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-// used to create fake backend
-// import { fakeBackendProvider } from './_helpers/index';
-// import { MockBackend, MockConnection } from '@angular/http/testing';
 
 
 
@@ -506,7 +494,7 @@ contentHeaders.append('Content-Type', 'application/json');
 /***/ "./src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"fs col-md-12\">\n    <div class=\"col-md-12 bg-primary\">\n        <!--<h3>My message publisher</h3>-->\n        <h3 class=\"text-center\">Hi {{ currentUser.message }}!</h3>\n\n        <div class=\"block\">\n            <div class=\"row\">\n                <div class=\"col-md-8 col-md-offset-2\">\n                    <textarea [(ngModel)]=\"newTweet\" placeholder=\"What's happening?\" class=\"form-control\" rows=\"3\"></textarea>\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-md-1 col-md-offset-9\">\n                    <button class=\"btn btn-primary\" (click)=\" addTweet() \">Tweet</button>\n                </div>\n            </div>\n            <div class=\"stream-container col-md-8 col-md-offset-2\">\n                <div class=\"form-inline\">\n                    <div class=\"form-group\">\n                        <label for=\"exampleInputEmail2\">Email</label>\n                        <input type=\"email\" class=\"form-control\" id=\"exampleInputEmail2\" placeholder=\"jane.doe@example.com\">\n                    </div>\n                    <button type=\"submit\" class=\"btn btn-default\">Send invitation</button>\n                </div>\n\n                <div class=\"form-group\" *ngFor=\"let i of tweets; let id=index \">\n                    <p>{{i}}</p>\n                    <button class=\"btn btn-danger\" (click)=\"removeTweet(id)\">Delete</button>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"fs col-md-12\">\n    <div class=\"col-md-12\">\n        <h3 class=\"text-center\">Hi {{ currentUser.message }}!</h3>\n\n        <div class=\"block\">\n            <div class=\"row\">\n                <div class=\"col-md-8 col-md-offset-2\">\n                    <textarea [(ngModel)]=\"newTweet\" placeholder=\"What's happening?\" class=\"form-control\" rows=\"3\"></textarea>\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-md-1 col-md-offset-9\">\n                    <button class=\"btn btn-primary\" (click)=\" addTweet() \">Tweet</button>\n                </div>\n            </div>\n            <div class=\"stream-container col-md-8 col-md-offset-2\">\n                <div class=\"form-group\" *ngFor=\"let i of tweets; let id=index \">\n                    <div class=\"row\">\n                        <p>{{i}}</p>\n                        <button class=\"btn btn-danger\" (click)=\"removeTweet(id)\">Delete</button>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -565,13 +553,6 @@ var HomeComponent = (function () {
     HomeComponent.prototype.ngOnInit = function () {
         // this.user = this.currentUser.message;
         //  this.loadAllUsers();
-    };
-    HomeComponent.prototype.deleteUser = function (id) {
-        var _this = this;
-        this.userService.delete(id).subscribe(function () { _this.loadAllUsers(); });
-    };
-    HomeComponent.prototype.loadAllUsers = function () {
-        //      this.userService.getAll().subscribe(users => { this.users = users; });
     };
     return HomeComponent;
 }());
@@ -871,16 +852,7 @@ var RegisterComponent = (function () {
         this.loading = false;
     }
     RegisterComponent.prototype.register = function () {
-        var _this = this;
         this.loading = true;
-        this.userService.create(this.model)
-            .subscribe(function (data) {
-            _this.alertService.success('Registration successful', true);
-            _this.router.navigate(['/login']);
-        }, function (error) {
-            _this.alertService.error(error);
-            _this.loading = false;
-        });
     };
     RegisterComponent.prototype.ngOnInit = function () {
     };

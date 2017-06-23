@@ -1,17 +1,41 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>LoklakMessagePublisher</title>
+    <title>LoklakPublisher</title>
     <base href="https://sarishinohara.github.io/message-publisher-backup/">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link href="styles.d41d8cd98f00b204e980.bundle.css" rel="stylesheet"/></head>
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+
+<link href="styles.6aa3a6acadad447db858.bundle.css" rel="stylesheet"/></head>
 
 <body>
-    <app-root>Loading...</app-root>
-<script type="text/javascript" src="inline.053923acca102016affa.bundle.js"></script><script type="text/javascript" src="polyfills.c1dd16e57fa8d11134c9.bundle.js"></script><script type="text/javascript" src="vendor.d6ecee85d9e703ab2e65.bundle.js"></script><script type="text/javascript" src="main.4ebf81a460916ce63ced.bundle.js"></script></body>
+    <app-root>loading</app-root>
+<script type="text/javascript" src="inline.62b29b1542679c0cdfca.bundle.js"></script><script type="text/javascript" src="polyfills.f5c3685bce4785658385.bundle.js"></script><script type="text/javascript" src="scripts.7bc8d277b37acecc6760.bundle.js"></script><script type="text/javascript" src="vendor.edeff674ce3ec5c5cdd1.bundle.js"></script><script type="text/javascript" src="main.c49fa587ee12e48fb419.bundle.js"></script></body>
+
+<!--  Plugins -->
+<script>
+    $("#slider-range").slider({
+        range: true,
+        min: 0,
+        max: 500,
+        values: [75, 300],
+    });
+    $("#slider-default").slider({
+        value: 70,
+        orientation: "horizontal",
+        range: "min",
+        animate: true
+    });
+    $('.btn-tooltip').tooltip('show');
+    $('.radio').on('toggle', function() {});
+</script>
 
 </html>

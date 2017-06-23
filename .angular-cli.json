@@ -20,20 +20,20 @@
         "prefix": "app",
         "styles": [
             "styles.sass",
-            "bootstrap3/css/bootstrap.css",
+            "../node_modules/bootstrap/dist/css/bootstrap.css",
             "assets/css/ct-paper.css",
             "assets/css/demo.css"
         ],
         "scripts": [
-            "assets/js/run_prettify.js",
-            "assets/js/jquery-1.10.2.js",
-            "assets/js/jquery-ui-1.10.4.custom.min.js",
-            "bootstrap3/js/bootstrap.js",
+            "../node_modules/jquery/dist/jquery.js",
+            "../node_modules/jquery-ui-dist/jquery-ui.js",
+            "../node_modules/bootstrap/dist/js/bootstrap.js",
             "assets/js/ct-paper-checkbox.js",
             "assets/js/ct-paper-radio.js",
             "assets/js/bootstrap-select.js",
             "assets/js/bootstrap-datepicker.js",
-            "assets/js/ct-paper.js"
+            "assets/js/ct-paper.js",
+            "assets/js/plugin.js"
         ],
         "environmentSource": "environments/environment.ts",
         "environments": {

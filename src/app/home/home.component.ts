@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { User } from '../_models/index';
 import { UserService } from '../_services/index';
 
 @Component({
@@ -32,14 +31,6 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
        // this.user = this.currentUser.message;
       //  this.loadAllUsers();
-    }
-
-    deleteUser(id: number) {
-        this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
-    }
-
-    private loadAllUsers() {
-  //      this.userService.getAll().subscribe(users => { this.users = users; });
     }
 
 }

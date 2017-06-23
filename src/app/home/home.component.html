@@ -1,6 +1,5 @@
 <div class="fs col-md-12">
-    <div class="col-md-12 bg-primary">
-        <!--<h3>My message publisher</h3>-->
+    <div class="col-md-12">
         <h3 class="text-center">Hi {{ currentUser.message }}!</h3>
 
         <div class="block">
@@ -15,17 +14,11 @@
                 </div>
             </div>
             <div class="stream-container col-md-8 col-md-offset-2">
-                <div class="form-inline">
-                    <div class="form-group">
-                        <label for="exampleInputEmail2">Email</label>
-                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
-                    </div>
-                    <button type="submit" class="btn btn-default">Send invitation</button>
-                </div>
-
                 <div class="form-group" *ngFor="let i of tweets; let id=index ">
-                    <p>{{i}}</p>
-                    <button class="btn btn-danger" (click)="removeTweet(id)">Delete</button>
+                    <div class="row">
+                        <p>{{i}}</p>
+                        <button class="btn btn-danger" (click)="removeTweet(id)">Delete</button>
+                    </div>
                 </div>
             </div>
         </div>
